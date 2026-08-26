@@ -1,0 +1,51 @@
+{
+  "name": "AI Fitness Plan Generator",
+  "description": "n8n automation workflow for user registration, login, fitness data processing, AI fitness plan generation, Google Sheets storage, and response delivery.",
+  "components": {
+    "registration": {
+      "trigger": "POST Webhook",
+      "flow": [
+        "Receive name, email, password and timestamp",
+        "Check Google Sheets for existing email",
+        "Reject duplicate email",
+        "Generate unique User ID",
+        "Save user information to Google Sheets",
+        "Return registration response"
+      ]
+    },
+    "login": {
+      "trigger": "POST Webhook",
+      "flow": [
+        "Receive email and password",
+        "Search Google Sheets for user",
+        "Validate email and password",
+        "Return login success or invalid credentials"
+      ]
+    },
+    "fitness_plan": {
+      "trigger": "POST Webhook",
+      "flow": [
+        "Receive fitness information",
+        "Extract user ID and fitness details",
+        "Store fitness information in Google Sheets",
+        "Build personalized AI prompt",
+        "Send prompt to AI Agent",
+        "Generate fitness plan using Groq",
+        "Use OpenAI GPT-OSS-120B model",
+        "Extract structured workout and meal information",
+        "Save generated plan to Google Sheets",
+        "Return JSON response to website"
+      ]
+    },
+    "pdf_generation": {
+      "handled_by": "Website",
+      "description": "The generated plan is returned to the website, where the website handles PDF generation and download."
+    }
+  },
+  "integrations": [
+    "n8n Webhooks",
+    "Google Sheets",
+    "Groq API",
+    "OpenAI GPT-OSS-120B"
+  ]
+}
