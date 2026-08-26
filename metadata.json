@@ -1,0 +1,6 @@
+{
+  "name": "FITAI - AI Fitness Plan Generator",
+  "description": "Personalized AI-powered fitness plan generator with custom workouts, schedules, nutrition, and PDF exports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
